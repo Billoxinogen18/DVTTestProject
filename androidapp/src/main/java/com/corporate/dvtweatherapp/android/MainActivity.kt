@@ -3,45 +3,22 @@ package com.corporate.dvtweatherapp.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.corporate.dvtweatherapp.android.ui.theme.DVTTestProjectTheme
+import com.corporate.dvtweatherapp.android.ui.theme.DVTWeatherAppTheme
+
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.corporate.dvtweatherapp.android.ui.WeatherScreen
+import com.corporate.dvtweatherapp.android.utils.Utils
+import com.corporate.dvtweatherapp.android.viewmodel.WeatherViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        Utils.setContext(this)
         setContent {
-            DVTTestProjectTheme {
-                Scaffold(modifiAer = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            DVTWeatherAppTheme {
+                val weatherViewModel: WeatherViewModel = viewModel()
+                WeatherScreen(weatherViewModel)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DVTTestProjectTheme {
-        Greeting("Android")
     }
 }
