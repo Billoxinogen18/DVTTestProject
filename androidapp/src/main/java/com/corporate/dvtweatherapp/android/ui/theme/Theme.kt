@@ -9,12 +9,14 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import com.corporate.dvtweatherapp.ui.theme.Pink40
-import com.corporate.dvtweatherapp.ui.theme.Pink80
-import com.corporate.dvtweatherapp.ui.theme.Purple40
-import com.corporate.dvtweatherapp.ui.theme.Purple80
-import com.corporate.dvtweatherapp.ui.theme.PurpleGrey40
-import com.corporate.dvtweatherapp.ui.theme.PurpleGrey80
+import com.corporate.dvtweatherapp.android.ui.theme.color.Purple80
+import com.corporate.dvtweatherapp.android.ui.theme.color.Pink40
+import com.corporate.dvtweatherapp.android.ui.theme.color.Pink80
+
+import com.corporate.dvtweatherapp.android.ui.theme.color.Purple40
+import com.corporate.dvtweatherapp.android.ui.theme.color.Purple80
+import com.corporate.dvtweatherapp.android.ui.theme.color.PurpleGrey40
+import com.corporate.dvtweatherapp.android.ui.theme.color.PurpleGrey80
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
