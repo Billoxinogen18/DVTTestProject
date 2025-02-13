@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.composeCompiler)
     id("io.gitlab.arturbosch.detekt")
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -27,11 +28,11 @@ android {
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"b05c0463b99bee4cae63790f15061137\"")
+            buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"3b054cd8e7340d91fc2300d142e75ab7\"")
         }
         debug{
 
-            buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"b05c0463b99bee4cae63790f15061137\"")
+            buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"3b054cd8e7340d91fc2300d142e75ab7\"")
         }
     }
     compileOptions {

@@ -57,7 +57,7 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"b05c0463b99bee4cae63790f15061137\"") // YOUR API KEY HERE
+        buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"3b054cd8e7340d91fc2300d142e75ab7\"") // YOUR API KEY HERE
 
     }
     packaging {
@@ -73,11 +73,11 @@ android {
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"b05c0463b99bee4cae63790f15061137\"")
+            buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"3b054cd8e7340d91fc2300d142e75ab7\"")
         }
         debug{
 
-            buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"b05c0463b99bee4cae63790f15061137\"")
+            buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"3b054cd8e7340d91fc2300d142e75ab7\"")
         }
     }
     compileOptions {
