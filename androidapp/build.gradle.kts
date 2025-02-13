@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.corporate.dvtweatherapp"
+    namespace = "com.corporate.dvtweatherapp.android"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.corporate.dvtweatherapp"
+        applicationId = "com.corporate.dvtweatherapp.android"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
