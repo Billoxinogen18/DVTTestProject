@@ -57,6 +57,8 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+        buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"b05c0463b99bee4cae63790f15061137\"") // YOUR API KEY HERE
+
     }
     packaging {
         resources {
@@ -64,13 +66,27 @@ android {
         }
     }
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+
+            buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"b05c0463b99bee4cae63790f15061137\"")
+        }
+        debug{
+
+            buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"b05c0463b99bee4cae63790f15061137\"")
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        compose = true
+        buildConfig = true
     }
 }
 
