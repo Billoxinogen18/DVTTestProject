@@ -9,3 +9,8 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
     kotlin("plugin.serialization") version "1.9.0" apply false
 }
+
+detekt {
+    config = files("$rootDir/config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
+}
