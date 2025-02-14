@@ -130,12 +130,15 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3  
+    - uses: actions/checkout@v3
     - name: set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -157,7 +160,7 @@ jobs:
 
     - name: Create Release
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: softprops/action-gh-release@v1 
+      uses: softprops/action-gh-release@v1
       with:
         tag_name: release-${{ github.run_number }}
         name: Release ${{ github.run_number }}
@@ -170,7 +173,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload Test Reports
-      uses: actions/upload-artifact@v4 
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: test-reports
