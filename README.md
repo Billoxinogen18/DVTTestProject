@@ -17,6 +17,8 @@ A modern Android weather application built using Kotlin Multiplatform (KMP) that
 *   **Loading States:** Clear loading indicators during data fetching
 *   **Unit Testing:** Comprehensive tests for WeatherViewModel
 *   **Code Quality:** Integrated with Detekt for static analysis
+*   **Github Releases:** Every merge to MAIN branch creates a release on github
+*   **Uploading test results:** Test results are automatically uploaded on merge to MAIN branch
 *   **Secure:** HTTPS for all network requests
 
 ## 🏗️ Project Structure
