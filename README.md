@@ -122,7 +122,7 @@ buildConfigField("String", "OPENWEATHERMAP_API_KEY", "\"your-api-key-here\"")
 The project includes a GitHub Actions workflow for automated building and testing:
 
 ```yaml
-name: Android CI
+name: DVT Weather App CI
 
 on:
   push:
@@ -133,20 +133,49 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 17
+    - name: set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
         cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
     - name: Run Detekt
       run: ./gradlew detekt
+
     - name: Run Tests
       run: ./gradlew test
-    - name: Build
-      run: ./gradlew build
+
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug  
+
+    - name: Create Release
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: release-${{ github.run_number }}  
+        name: Release ${{ github.run_number }}
+        draft: false
+        prerelease: false
+        files: |
+          androidApp/build/outputs/apk/debug/androidApp-debug.apk
+
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # Upload test reports 
+    - name: Upload Test Reports
+      uses: actions/upload-artifact@v3
+      if: always() 
+      with:
+        name: test-reports
+        path: androidApp/build/reports/tests/testDebugUnitTest/ 
 ```
 
 ## 📝 Additional Notes
