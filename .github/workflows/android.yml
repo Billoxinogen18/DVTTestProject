@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:  
+permissions:
   contents: write
 
 jobs:
@@ -53,4 +53,4 @@ jobs:
       if: always()
       with:
         name: test-reports
-        path: androidApp/build/reports/tests/testDebugUnitTest/html/
+        path: androidApp/build/reports/tests/testDebugUnitTest/
