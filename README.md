@@ -135,7 +135,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3  
     - name: set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -153,13 +153,13 @@ jobs:
       run: ./gradlew test
 
     - name: Build Debug APK
-      run: ./gradlew assembleDebug  
+      run: ./gradlew assembleDebug
 
     - name: Create Release
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v1 
       with:
-        tag_name: release-${{ github.run_number }}  
+        tag_name: release-${{ github.run_number }}
         name: Release ${{ github.run_number }}
         draft: false
         prerelease: false
@@ -169,13 +169,13 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    # Upload test reports 
     - name: Upload Test Reports
-      uses: actions/upload-artifact@v3
-      if: always() 
+      uses: actions/upload-artifact@v4 
+      if: always()
       with:
         name: test-reports
         path: androidApp/build/reports/tests/testDebugUnitTest/ 
+
 ```
 
 ## 📝 Additional Notes
