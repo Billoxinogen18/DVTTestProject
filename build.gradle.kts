@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid) apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
     kotlin("plugin.serialization") version "1.9.0" apply false
+
 }
 
 detekt {
