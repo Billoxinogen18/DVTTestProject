@@ -28,22 +28,27 @@ jobs:
     - name: Run Tests
       run: ./gradlew test
 
-    - name: Build with Gradle 
-      run: ./gradlew build
-
     - name: Build Debug APK
       run: ./gradlew assembleDebug  
 
     - name: Create Release
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ github.run_number }}  
+        tag_name: release-${{ github.run_number }}  
         name: Release ${{ github.run_number }}
         draft: false
         prerelease: false
         files: |
-          androidApp/build/outputs/apk/debug/androidApp-debug.apk # Path to the APK
+          androidApp/build/outputs/apk/debug/androidApp-debug.apk
 
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} =
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # Upload test reports 
+    - name: Upload Test Reports
+      uses: actions/upload-artifact@v3
+      if: always() 
+      with:
+        name: test-reports
+        path: androidApp/build/reports/tests/testDebugUnitTest/ 
